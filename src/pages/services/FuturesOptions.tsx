@@ -11,7 +11,7 @@ const FuturesOptions = () => {
         "Whether you're hedging risk or seeking leveraged opportunities, our platform offers the depth, liquidity, and precision tools you need for successful derivatives trading.",
         "With advanced risk management features and real-time market data, you can make informed decisions and manage your positions effectively."
       ]}
-      image="https://images.unsplash.com/photo-1642543348772-28711d6c1ffd?q=80&w=1000&auto=format&fit=crop"
+      image="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1000&auto=format&fit=crop"
       advantages={[
         {
           title: "Advanced Strategy Builder",

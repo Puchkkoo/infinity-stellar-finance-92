@@ -131,35 +131,47 @@ export function WorldMap() {
               aria-label={markets[market as keyof typeof markets]?.name}
             />
           </PopoverTrigger>
-          <PopoverContent className="w-80 p-4 backdrop-blur-sm bg-white/90 dark:bg-infinity-900/90 border border-infinity-200 dark:border-infinity-700 shadow-xl">
-            <div className="space-y-3">
-              <h3 className="font-serif font-bold text-xl text-infinity-800 dark:text-infinity-200">
-                {markets[market as keyof typeof markets]?.name}
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                {markets[market as keyof typeof markets]?.index}
-              </p>
-              <div className="flex justify-between items-center">
-                <p className="text-2xl font-bold">
-                  {markets[market as keyof typeof markets]?.value}
+          <PopoverContent className="w-80 p-0 backdrop-blur-sm bg-white/90 dark:bg-infinity-900/90 border border-infinity-200 dark:border-infinity-700 shadow-xl rounded-xl overflow-hidden">
+            <div className="relative overflow-hidden">
+              <div className={`absolute inset-0 opacity-10 ${getMarkerColor(market)} blur-md`}></div>
+              <div className="p-4 space-y-3 relative z-10">
+                <div className="flex items-center gap-3">
+                  <div className={`w-3 h-3 rounded-full ${getMarkerColor(market)}`}></div>
+                  <h3 className="font-serif font-bold text-xl text-infinity-800 dark:text-infinity-200">
+                    {markets[market as keyof typeof markets]?.name}
+                  </h3>
+                </div>
+                
+                <p className="text-sm text-muted-foreground">
+                  {markets[market as keyof typeof markets]?.index}
                 </p>
-                <p className={`font-medium text-lg ${markets[market as keyof typeof markets]?.change.startsWith('+') ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
-                  {markets[market as keyof typeof markets]?.change}
+                
+                <div className="flex justify-between items-center">
+                  <p className="text-2xl font-bold">
+                    {markets[market as keyof typeof markets]?.value}
+                  </p>
+                  <p className={`font-medium text-lg ${markets[market as keyof typeof markets]?.change.startsWith('+') ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+                    {markets[market as keyof typeof markets]?.change}
+                  </p>
+                </div>
+                
+                <div className="h-px bg-gradient-to-r from-transparent via-infinity-200 dark:via-infinity-700 to-transparent my-2"></div>
+                
+                <p className="text-sm text-muted-foreground mt-2">
+                  {markets[market as keyof typeof markets]?.description}
                 </p>
-              </div>
-              <p className="text-sm text-muted-foreground mt-2">
-                {markets[market as keyof typeof markets]?.description}
-              </p>
-              <div className="pt-2">
-                <a 
-                  href={`/markets?region=${market}`} 
-                  className="text-infinity-600 dark:text-infinity-400 font-medium hover:underline flex items-center"
-                >
-                  View detailed analysis
-                  <svg className="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </a>
+                
+                <div className="pt-2">
+                  <a 
+                    href={`/markets?region=${market}`} 
+                    className="text-infinity-600 dark:text-infinity-400 font-medium hover:underline flex items-center group"
+                  >
+                    View detailed analysis
+                    <svg className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </a>
+                </div>
               </div>
             </div>
           </PopoverContent>

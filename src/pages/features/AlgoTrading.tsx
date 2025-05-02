@@ -13,7 +13,7 @@ const AlgoTrading = () => {
         "Our platform provides the infrastructure, tools, and flexibility to develop, backtest, and deploy sophisticated trading algorithms across multiple asset classes.",
         "Whether you're a quantitative trader, a technical analyst looking to automate your setups, or an investor seeking to remove emotion from trading decisions, our algo trading platform offers the capabilities you need."
       ]}
-      image="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1000&auto=format&fit=crop"
+      image="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&auto=format&fit=crop"
       benefits={[
         {
           title: "Eliminate Emotional Bias",

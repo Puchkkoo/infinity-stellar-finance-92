@@ -20,10 +20,16 @@ import NotFound from "./pages/NotFound";
 // Service Pages
 import Equity from "./pages/services/Equity";
 import FuturesOptions from "./pages/services/FuturesOptions";
+import International from "./pages/services/International";
+import TaxReports from "./pages/services/TaxReports";
+import PortfolioManagement from "./pages/services/PortfolioManagement";
 
 // Feature Pages
 import AlgoTrading from "./pages/features/AlgoTrading";
 import Security from "./pages/features/Security";
+import AdvancedCharting from "./pages/features/AdvancedCharting";
+import MobileTrading from "./pages/features/MobileTrading";
+import LearningResources from "./pages/features/LearningResources";
 
 // Additional routes for Sponge product
 const SpongeForums = () => <div>Forums Coming Soon</div>;
@@ -40,7 +46,7 @@ const SynapseDocuments = () => <div>Documents Coming Soon</div>;
 // Additional routes for Flamingo product
 const StockScreener = () => <div>Stock Screener Coming Soon</div>;
 const PortfolioAnalytics = () => <div>Portfolio Analytics Coming Soon</div>;
-const AdvancedCharting = () => <div>Advanced Charting Coming Soon</div>;
+const AdvancedChartingRoute = () => <div>Advanced Charting Coming Soon</div>;
 
 const queryClient = new QueryClient();
 
@@ -66,10 +72,17 @@ const App = () => (
           {/* Service Pages */}
           <Route path="/services/equity" element={<Equity />} />
           <Route path="/services/fno" element={<FuturesOptions />} />
+          <Route path="/services/international" element={<International />} />
+          <Route path="/services/tax-reports" element={<TaxReports />} />
+          <Route path="/services/portfolio-management" element={<PortfolioManagement />} />
+          <Route path="/services/coming-soon" element={<NotFound />} />
           
           {/* Feature Pages */}
           <Route path="/features/algo-trading" element={<AlgoTrading />} />
           <Route path="/features/security" element={<Security />} />
+          <Route path="/features/advanced-charting" element={<AdvancedCharting />} />
+          <Route path="/features/mobile-trading" element={<MobileTrading />} />
+          <Route path="/features/learning-resources" element={<LearningResources />} />
           
           {/* Sponge Routes */}
           <Route path="/sponge/forums" element={<SpongeForums />} />
@@ -86,7 +99,7 @@ const App = () => (
           {/* Flamingo Routes */}
           <Route path="/features/stock-screener" element={<StockScreener />} />
           <Route path="/features/portfolio-analytics" element={<PortfolioAnalytics />} />
-          <Route path="/features/advanced-charting" element={<AdvancedCharting />} />
+          <Route path="/features/advanced-charting" element={<AdvancedChartingRoute />} />
           
           <Route path="*" element={<NotFound />} />
         </Routes>
