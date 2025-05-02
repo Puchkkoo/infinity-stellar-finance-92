@@ -17,6 +17,14 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 
+// Service Pages
+import Equity from "./pages/services/Equity";
+import FuturesOptions from "./pages/services/FuturesOptions";
+
+// Feature Pages
+import AlgoTrading from "./pages/features/AlgoTrading";
+import Security from "./pages/features/Security";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -37,6 +45,15 @@ const App = () => (
           <Route path="/mission" element={<Mission />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          
+          {/* Service Pages */}
+          <Route path="/services/equity" element={<Equity />} />
+          <Route path="/services/fno" element={<FuturesOptions />} />
+          
+          {/* Feature Pages */}
+          <Route path="/features/algo-trading" element={<AlgoTrading />} />
+          <Route path="/features/security" element={<Security />} />
+          
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

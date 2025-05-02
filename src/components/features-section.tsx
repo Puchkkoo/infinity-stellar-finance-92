@@ -1,32 +1,43 @@
 
 import { Award, BarChart2, Lock, Smartphone, BookOpen } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export function FeaturesSection() {
   const features = [
     {
       icon: <BarChart2 className="h-10 w-10 text-infinity-600 dark:text-infinity-400" />,
       title: "Algo Trading",
-      description: "Deploy automated trading strategies based on predefined parameters and market conditions"
+      description: "Deploy automated trading strategies based on predefined parameters and market conditions",
+      image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1000&auto=format&fit=crop",
+      url: "/features/algo-trading"
     },
     {
       icon: <BarChart2 className="h-10 w-10 text-infinity-600 dark:text-infinity-400" />,
       title: "Advanced Charting",
-      description: "Professional-grade charting tools with over 100 indicators and drawing tools"
+      description: "Professional-grade charting tools with over 100 indicators and drawing tools",
+      image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1000&auto=format&fit=crop",
+      url: "/features/advanced-charting"
     },
     {
       icon: <Smartphone className="h-10 w-10 text-infinity-600 dark:text-infinity-400" />,
       title: "Mobile Trading",
-      description: "Trade on the go with our feature-rich mobile applications for iOS and Android"
+      description: "Trade on the go with our feature-rich mobile applications for iOS and Android",
+      image: "https://images.unsplash.com/photo-1553545204-4f7d339aa06a?q=80&w=1000&auto=format&fit=crop",
+      url: "/features/mobile-trading"
     },
     {
       icon: <Lock className="h-10 w-10 text-infinity-600 dark:text-infinity-400" />,
       title: "Bank-Grade Security",
-      description: "Enterprise-level security protocols to protect your investments and personal data"
+      description: "Enterprise-level security protocols to protect your investments and personal data",
+      image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=1000&auto=format&fit=crop",
+      url: "/features/security"
     },
     {
       icon: <BookOpen className="h-10 w-10 text-infinity-600 dark:text-infinity-400" />,
       title: "Learning Resources",
-      description: "Comprehensive educational content to help you make informed investment decisions"
+      description: "Comprehensive educational content to help you make informed investment decisions",
+      image: "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?q=80&w=1000&auto=format&fit=crop",
+      url: "/features/learning"
     }
   ];
 
@@ -45,13 +56,25 @@ export function FeaturesSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
           {features.map((feature) => (
-            <div key={feature.title} className="flex flex-col items-center text-center">
-              <div className="mb-4 p-3 rounded-full bg-infinity-100 dark:bg-infinity-900/40">
-                {feature.icon}
+            <Link 
+              key={feature.title} 
+              to={feature.url}
+              className="group"
+            >
+              <div className="relative rounded-xl overflow-hidden mb-6 h-48">
+                <img 
+                  src={feature.image} 
+                  alt={feature.title} 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-infinity-900/30 group-hover:bg-infinity-900/20 transition-all"></div>
+                <div className="absolute top-4 left-4 p-3 rounded-full bg-infinity-100/90 dark:bg-infinity-900/90 backdrop-blur-sm">
+                  {feature.icon}
+                </div>
               </div>
-              <h3 className="text-xl font-serif font-bold mb-3">{feature.title}</h3>
+              <h3 className="text-xl font-serif font-bold mb-3 group-hover:text-infinity-600 dark:group-hover:text-infinity-400 transition-colors">{feature.title}</h3>
               <p className="text-muted-foreground">{feature.description}</p>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

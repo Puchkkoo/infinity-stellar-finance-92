@@ -58,37 +58,14 @@ export function WorldMap() {
 
   return (
     <div className="relative w-full aspect-[16/9] bg-infinity-100 dark:bg-infinity-900/30 rounded-xl overflow-hidden">
-      {/* World map SVG or image */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <svg className="w-full h-full opacity-20" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
-          <path d="M600,50 Q900,150 1100,200 Q1150,250 1100,400 Q900,550 600,550 Q300,550 100,400 Q50,250 100,200 Q300,150 600,50" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-          />
-          <path d="M300,200 Q400,150 500,200 Q600,250 700,200 Q800,150 900,200" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-          />
-          <path d="M400,300 Q500,250 600,300 Q700,350 800,300" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-          />
-          <path d="M350,400 Q450,350 550,400 Q650,450 750,400" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-          />
-        </svg>
-
-        <img 
-          src="https://images.unsplash.com/photo-1589519160732-57fc6e1dc2f8?q=80&w=1920&auto=format&fit=crop" 
-          alt="World Map"
-          className="absolute inset-0 w-full h-full object-cover opacity-30" 
-        />
-      </div>
+      {/* World map image */}
+      <img 
+        src="https://images.unsplash.com/photo-1589519160732-57fc6e1dc2f8?q=80&w=1920&auto=format&fit=crop" 
+        alt="World Map"
+        className="absolute inset-0 w-full h-full object-cover opacity-70 dark:opacity-50" 
+      />
+      
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-infinity-100/70 dark:to-infinity-900/70"></div>
 
       {/* Market hotspots */}
       {Object.keys(markets).map((market) => (

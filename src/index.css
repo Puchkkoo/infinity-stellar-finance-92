@@ -96,6 +96,23 @@
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+  
+  /* Enhance scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-infinity-200 dark:bg-infinity-800 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-infinity-300 dark:bg-infinity-700;
+  }
 }
 
 @layer components {
@@ -143,4 +160,75 @@
   .nav-link {
     @apply text-foreground/80 hover:text-foreground transition-colors font-medium;
   }
+  
+  /* Image hover effects */
+  .zoom-image {
+    @apply overflow-hidden;
+  }
+  
+  .zoom-image img {
+    @apply transition-transform duration-500;
+  }
+  
+  .zoom-image:hover img {
+    @apply scale-110;
+  }
+  
+  /* Enhanced button hover effect */
+  .btn-hover-effect {
+    @apply relative overflow-hidden;
+  }
+  
+  .btn-hover-effect::after {
+    content: '';
+    @apply absolute inset-0 bg-white/20 scale-x-0 origin-left transition-transform duration-300;
+  }
+  
+  .btn-hover-effect:hover::after {
+    @apply scale-x-100;
+  }
+  
+  /* Page transitions */
+  .page-enter {
+    @apply opacity-0;
+  }
+  
+  .page-enter-active {
+    @apply opacity-100 transition-opacity duration-300;
+  }
+  
+  .page-exit {
+    @apply opacity-100;
+  }
+  
+  .page-exit-active {
+    @apply opacity-0 transition-opacity duration-300;
+  }
+  
+  /* Card hover effects */
+  .hover-card {
+    @apply transition-all duration-300;
+  }
+  
+  .hover-card:hover {
+    @apply -translate-y-2 shadow-lg;
+  }
+  
+  /* Text reveal animation */
+  .reveal-text {
+    @apply relative overflow-hidden;
+  }
+  
+  .reveal-text::after {
+    content: '';
+    @apply absolute inset-0 bg-background transform-gpu -translate-x-full;
+    animation: revealText 1s ease forwards;
+  }
+  
+  @keyframes revealText {
+    to {
+      @apply translate-x-full;
+    }
+  }
 }
+
