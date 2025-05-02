@@ -11,21 +11,24 @@ export function NewsSection() {
       excerpt: "An analysis of how recent tariff changes are reshaping international trade dynamics and market behavior.",
       date: "May 2, 2025",
       category: "Markets",
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop",
+      slug: "rising-tariffs-global-markets"
     },
     {
       title: "Understanding Modern Economic Recessions",
       excerpt: "A deep dive into the changing nature of economic downturns in the 21st century global economy.",
       date: "April 28, 2025",
       category: "Economy",
-      image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=800&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=800&auto=format&fit=crop",
+      slug: "understanding-modern-recessions"
     },
     {
       title: "The Future of Digital Finance: Trends to Watch",
       excerpt: "Exploring emerging technologies and innovations shaping the future of financial services.",
       date: "April 23, 2025",
       category: "Technology",
-      image: "https://images.unsplash.com/photo-1605792657660-596af9009e82?q=80&w=800&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1605792657660-596af9009e82?q=80&w=800&auto=format&fit=crop",
+      slug: "future-digital-finance-trends"
     }
   ];
 
@@ -71,8 +74,8 @@ export function NewsSection() {
                 <p className="text-muted-foreground">{article.excerpt}</p>
               </CardContent>
               <CardFooter>
-                <Button variant="ghost" size="sm" className="text-infinity-700 dark:text-infinity-400">
-                  Read More
+                <Button variant="ghost" size="sm" className="text-infinity-700 dark:text-infinity-400" asChild>
+                  <Link to={`/blog/${article.slug}`}>Read More</Link>
                 </Button>
               </CardFooter>
             </Card>

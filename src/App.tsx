@@ -31,6 +31,10 @@ import AdvancedCharting from "./pages/features/AdvancedCharting";
 import MobileTrading from "./pages/features/MobileTrading";
 import LearningResources from "./pages/features/LearningResources";
 
+// Blog Pages
+import BlogPost from "./pages/blog/BlogPost";
+import BlogCategory from "./pages/blog/BlogCategory";
+
 // Additional routes for Sponge product
 const SpongeForums = () => <div>Forums Coming Soon</div>;
 const SpongeResources = () => <div>Resources Coming Soon</div>;
@@ -75,7 +79,6 @@ const App = () => (
           <Route path="/services/international" element={<International />} />
           <Route path="/services/tax-reports" element={<TaxReports />} />
           <Route path="/services/portfolio-management" element={<PortfolioManagement />} />
-          <Route path="/services/coming-soon" element={<NotFound />} />
           
           {/* Feature Pages */}
           <Route path="/features/algo-trading" element={<AlgoTrading />} />
@@ -83,6 +86,10 @@ const App = () => (
           <Route path="/features/advanced-charting" element={<AdvancedCharting />} />
           <Route path="/features/mobile-trading" element={<MobileTrading />} />
           <Route path="/features/learning-resources" element={<LearningResources />} />
+          
+          {/* Blog Pages */}
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/blog/category/:category" element={<BlogCategory />} />
           
           {/* Sponge Routes */}
           <Route path="/sponge/forums" element={<SpongeForums />} />

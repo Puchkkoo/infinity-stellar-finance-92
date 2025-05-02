@@ -4,6 +4,7 @@ import { Footer } from "@/components/footer";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FileText } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const IndianStreet = () => {
   const featuredArticles = [
@@ -13,7 +14,8 @@ const IndianStreet = () => {
       date: "May 2, 2025",
       category: "Markets",
       image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop",
-      readTime: "8 min read"
+      readTime: "8 min read",
+      slug: "rising-tariffs-global-markets"
     },
     {
       title: "Understanding Modern Economic Recessions",
@@ -21,7 +23,8 @@ const IndianStreet = () => {
       date: "April 28, 2025",
       category: "Economy",
       image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=800&auto=format&fit=crop",
-      readTime: "12 min read"
+      readTime: "12 min read",
+      slug: "understanding-modern-recessions"
     },
     {
       title: "The Future of Digital Finance: Trends to Watch",
@@ -29,7 +32,8 @@ const IndianStreet = () => {
       date: "April 23, 2025",
       category: "Technology",
       image: "https://images.unsplash.com/photo-1605792657660-596af9009e82?q=80&w=800&auto=format&fit=crop",
-      readTime: "10 min read"
+      readTime: "10 min read",
+      slug: "future-digital-finance-trends"
     }
   ];
 
@@ -60,6 +64,70 @@ const IndianStreet = () => {
       category: "Banking"
     }
   ];
+
+  const categories = [
+    { name: "Markets", icon: "chart-bar", path: "markets" },
+    { name: "Economy", icon: "trending-up", path: "economy" },
+    { name: "Corporate", icon: "briefcase", path: "corporate" },
+    { name: "Technology", icon: "smartphone", path: "technology" },
+    { name: "Trade", icon: "trending-up", path: "trade" },
+    { name: "Banking", icon: "banknote", path: "banking" },
+    { name: "Energy", icon: "zap", path: "energy" },
+    { name: "Global", icon: "globe", path: "global" }
+  ];
+
+  const getCategoryIcon = (iconName: string) => {
+    switch (iconName) {
+      case "chart-bar":
+        return (
+          <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+          </svg>
+        );
+      case "trending-up":
+        return (
+          <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+          </svg>
+        );
+      case "briefcase":
+        return (
+          <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>
+        );
+      case "smartphone":
+        return (
+          <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>
+        );
+      case "banknote":
+        return (
+          <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+          </svg>
+        );
+      case "zap":
+        return (
+          <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+        );
+      case "globe":
+        return (
+          <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+          </svg>
+        );
+      default:
+        return (
+          <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+          </svg>
+        );
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -131,16 +199,31 @@ const IndianStreet = () => {
                       </div>
                       <CardHeader className="pb-2">
                         <div className="flex justify-between items-center mb-1">
-                          <span className="text-xs font-medium text-green-600 dark:text-green-400">{article.category}</span>
+                          <Link 
+                            to={`/blog/category/${article.category.toLowerCase()}`}
+                            className="text-xs font-medium text-green-600 dark:text-green-400 hover:underline"
+                          >
+                            {article.category}
+                          </Link>
                           <span className="text-xs text-muted-foreground">{article.date}</span>
                         </div>
-                        <h3 className="text-lg font-bold leading-tight">{article.title}</h3>
+                        <Link to={`/blog/${article.slug}`}>
+                          <h3 className="text-lg font-bold leading-tight hover:text-green-600 dark:hover:text-green-400 transition-colors">{article.title}</h3>
+                        </Link>
                       </CardHeader>
                       <CardContent>
                         <p className="text-sm text-muted-foreground line-clamp-3">{article.excerpt}</p>
                       </CardContent>
                       <CardFooter>
-                        <div className="text-xs text-muted-foreground">{article.readTime}</div>
+                        <div className="flex justify-between items-center w-full">
+                          <div className="text-xs text-muted-foreground">{article.readTime}</div>
+                          <Link 
+                            to={`/blog/${article.slug}`}
+                            className="text-sm text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 transition-colors"
+                          >
+                            Read More
+                          </Link>
+                        </div>
                       </CardFooter>
                     </Card>
                   ))}
@@ -196,77 +279,18 @@ const IndianStreet = () => {
             </div>
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <a href="#" className="flex flex-col items-center p-6 bg-background rounded-lg hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                  </svg>
-                </div>
-                <h3 className="font-medium text-center">Markets</h3>
-              </a>
-              
-              <a href="#" className="flex flex-col items-center p-6 bg-background rounded-lg hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                </div>
-                <h3 className="font-medium text-center">Economy</h3>
-              </a>
-              
-              <a href="#" className="flex flex-col items-center p-6 bg-background rounded-lg hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                  </svg>
-                </div>
-                <h3 className="font-medium text-center">Corporate</h3>
-              </a>
-              
-              <a href="#" className="flex flex-col items-center p-6 bg-background rounded-lg hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                  </svg>
-                </div>
-                <h3 className="font-medium text-center">Technology</h3>
-              </a>
-              
-              <a href="#" className="flex flex-col items-center p-6 bg-background rounded-lg hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
-                  </svg>
-                </div>
-                <h3 className="font-medium text-center">Trade</h3>
-              </a>
-              
-              <a href="#" className="flex flex-col items-center p-6 bg-background rounded-lg hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                  </svg>
-                </div>
-                <h3 className="font-medium text-center">Banking</h3>
-              </a>
-              
-              <a href="#" className="flex flex-col items-center p-6 bg-background rounded-lg hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                  </svg>
-                </div>
-                <h3 className="font-medium text-center">Energy</h3>
-              </a>
-              
-              <a href="#" className="flex flex-col items-center p-6 bg-background rounded-lg hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
-                  </svg>
-                </div>
-                <h3 className="font-medium text-center">Global</h3>
-              </a>
+              {categories.map((category, index) => (
+                <Link 
+                  key={index}
+                  to={`/blog/category/${category.path}`} 
+                  className="flex flex-col items-center p-6 bg-background rounded-lg hover:shadow-md transition-shadow"
+                >
+                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-4">
+                    {getCategoryIcon(category.icon)}
+                  </div>
+                  <h3 className="font-medium text-center">{category.name}</h3>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
