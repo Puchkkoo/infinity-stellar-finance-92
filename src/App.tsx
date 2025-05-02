@@ -25,6 +25,23 @@ import FuturesOptions from "./pages/services/FuturesOptions";
 import AlgoTrading from "./pages/features/AlgoTrading";
 import Security from "./pages/features/Security";
 
+// Additional routes for Sponge product
+const SpongeForums = () => <div>Forums Coming Soon</div>;
+const SpongeResources = () => <div>Resources Coming Soon</div>;
+const SpongeMentors = () => <div>Mentors Coming Soon</div>;
+const SpongeEvents = () => <div>Events Coming Soon</div>;
+const SpongeAbout = () => <div>About Sponge Coming Soon</div>;
+
+// Additional routes for Synapse product
+const SynapseTaskManagement = () => <div>Task Management Coming Soon</div>;
+const SynapseCalendar = () => <div>Calendar Coming Soon</div>;
+const SynapseDocuments = () => <div>Documents Coming Soon</div>;
+
+// Additional routes for Flamingo product
+const StockScreener = () => <div>Stock Screener Coming Soon</div>;
+const PortfolioAnalytics = () => <div>Portfolio Analytics Coming Soon</div>;
+const AdvancedCharting = () => <div>Advanced Charting Coming Soon</div>;
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -53,6 +70,23 @@ const App = () => (
           {/* Feature Pages */}
           <Route path="/features/algo-trading" element={<AlgoTrading />} />
           <Route path="/features/security" element={<Security />} />
+          
+          {/* Sponge Routes */}
+          <Route path="/sponge/forums" element={<SpongeForums />} />
+          <Route path="/sponge/resources" element={<SpongeResources />} />
+          <Route path="/sponge/mentors" element={<SpongeMentors />} />
+          <Route path="/sponge/events" element={<SpongeEvents />} />
+          <Route path="/sponge/about" element={<SpongeAbout />} />
+          
+          {/* Synapse Routes */}
+          <Route path="/synapse/task-management" element={<SynapseTaskManagement />} />
+          <Route path="/synapse/calendar" element={<SynapseCalendar />} />
+          <Route path="/synapse/documents" element={<SynapseDocuments />} />
+          
+          {/* Flamingo Routes */}
+          <Route path="/features/stock-screener" element={<StockScreener />} />
+          <Route path="/features/portfolio-analytics" element={<PortfolioAnalytics />} />
+          <Route path="/features/advanced-charting" element={<AdvancedCharting />} />
           
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -4,9 +4,19 @@ import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Box } from "lucide-react";
+import { Box, BarChart3, LineChart, Users, Shield } from "lucide-react";
+import { Link } from "react-router-dom";
+import { toast } from "sonner";
 
 const Flamingo = () => {
+  const handleDemoClick = () => {
+    toast.success("Demo mode activated! You can now explore all premium features for the next 30 minutes.");
+  };
+
+  const handleStartedClick = () => {
+    window.location.href = "/register";
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -33,10 +43,10 @@ const Flamingo = () => {
                 </p>
                 
                 <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-                  <Button size="lg" className="bg-pink-600 hover:bg-pink-700">
+                  <Button size="lg" className="bg-pink-600 hover:bg-pink-700" onClick={handleStartedClick}>
                     Get Started
                   </Button>
-                  <Button variant="outline" size="lg">
+                  <Button variant="outline" size="lg" onClick={handleDemoClick}>
                     View Demo
                   </Button>
                 </div>
@@ -45,8 +55,24 @@ const Flamingo = () => {
               <div className="flex-1">
                 <div className="relative">
                   <div className="aspect-video bg-gradient-to-br from-pink-100 to-pink-50 dark:from-pink-900/30 dark:to-infinity-900/30 rounded-lg overflow-hidden shadow-xl">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <p className="text-muted-foreground">Trading interface visualization</p>
+                    <img 
+                      src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1000&auto=format&fit=crop" 
+                      alt="Trading interface" 
+                      className="absolute inset-0 object-cover w-full h-full opacity-60 dark:opacity-30"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+                    
+                    <div className="absolute bottom-0 left-0 w-full p-6">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-lg font-medium text-pink-900 dark:text-pink-100">NIFTY 50</p>
+                          <p className="text-2xl font-bold">21,843.24</p>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-green-600 dark:text-green-400 font-medium">+1.25%</p>
+                          <p className="text-sm text-muted-foreground">Today</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   
@@ -66,6 +92,41 @@ const Flamingo = () => {
               </p>
             </div>
             
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+              <div className="flex flex-col items-center text-center p-6 rounded-lg border bg-card hover:shadow-lg transition-all">
+                <div className="w-16 h-16 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center mb-6">
+                  <BarChart3 className="h-8 w-8 text-pink-600 dark:text-pink-400" />
+                </div>
+                <h3 className="text-xl font-bold mb-3">Advanced Charting</h3>
+                <p className="text-muted-foreground mb-6">Interactive charts with over 100+ indicators and drawing tools for technical analysis.</p>
+                <Link to="/features/advanced-charting" className="text-pink-600 dark:text-pink-400 font-medium hover:underline mt-auto">
+                  Learn more →
+                </Link>
+              </div>
+              
+              <div className="flex flex-col items-center text-center p-6 rounded-lg border bg-card hover:shadow-lg transition-all">
+                <div className="w-16 h-16 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center mb-6">
+                  <LineChart className="h-8 w-8 text-pink-600 dark:text-pink-400" />
+                </div>
+                <h3 className="text-xl font-bold mb-3">Stock Screener</h3>
+                <p className="text-muted-foreground mb-6">Find stocks that match your criteria with our powerful screener and filtering tools.</p>
+                <Link to="/features/stock-screener" className="text-pink-600 dark:text-pink-400 font-medium hover:underline mt-auto">
+                  Learn more →
+                </Link>
+              </div>
+              
+              <div className="flex flex-col items-center text-center p-6 rounded-lg border bg-card hover:shadow-lg transition-all">
+                <div className="w-16 h-16 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center mb-6">
+                  <Users className="h-8 w-8 text-pink-600 dark:text-pink-400" />
+                </div>
+                <h3 className="text-xl font-bold mb-3">Portfolio Analytics</h3>
+                <p className="text-muted-foreground mb-6">Track, manage and analyze your investments in one place with detailed reports.</p>
+                <Link to="/features/portfolio-analytics" className="text-pink-600 dark:text-pink-400 font-medium hover:underline mt-auto">
+                  Learn more →
+                </Link>
+              </div>
+            </div>
+            
             <Tabs defaultValue="charts" className="w-full">
               <TabsList className="grid w-full max-w-xl mx-auto grid-cols-3 mb-12">
                 <TabsTrigger value="charts">Charts</TabsTrigger>
@@ -76,12 +137,19 @@ const Flamingo = () => {
               <TabsContent value="charts" className="mt-6">
                 <Card>
                   <CardContent className="p-6">
-                    <div className="aspect-video bg-muted rounded-md flex items-center justify-center">
-                      <div className="text-center">
+                    <div className="aspect-video bg-muted rounded-md flex items-center justify-center relative overflow-hidden">
+                      <img 
+                        src="https://images.unsplash.com/photo-1642790246569-50ef6dbb0d55?q=80&w=2070&auto=format&fit=crop"
+                        alt="Advanced charts"
+                        className="absolute inset-0 w-full h-full object-cover opacity-30"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"></div>
+                      <div className="text-center relative z-10">
                         <h3 className="text-xl font-bold mb-2">Advanced Charting</h3>
-                        <p className="text-muted-foreground">
-                          Interactive charts with over 100+ indicators and drawing tools
+                        <p className="text-muted-foreground max-w-lg mx-auto mb-6">
+                          Interactive charts with over 100+ indicators and drawing tools. Analyze market trends with precision using customizable timeframes.
                         </p>
+                        <Button className="bg-pink-600 hover:bg-pink-700">Explore Charts</Button>
                       </div>
                     </div>
                   </CardContent>
@@ -91,12 +159,19 @@ const Flamingo = () => {
               <TabsContent value="screener" className="mt-6">
                 <Card>
                   <CardContent className="p-6">
-                    <div className="aspect-video bg-muted rounded-md flex items-center justify-center">
-                      <div className="text-center">
+                    <div className="aspect-video bg-muted rounded-md flex items-center justify-center relative overflow-hidden">
+                      <img 
+                        src="https://images.unsplash.com/photo-1612178991541-b48cc8e92a4d?q=80&w=2071&auto=format&fit=crop"
+                        alt="Stock screener"
+                        className="absolute inset-0 w-full h-full object-cover opacity-30"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"></div>
+                      <div className="text-center relative z-10">
                         <h3 className="text-xl font-bold mb-2">Stock Screener</h3>
-                        <p className="text-muted-foreground">
-                          Find stocks that match your criteria with our powerful screener
+                        <p className="text-muted-foreground max-w-lg mx-auto mb-6">
+                          Find stocks that match your criteria with our powerful screener. Filter by fundamentals, technicals, and over 150 parameters.
                         </p>
+                        <Button className="bg-pink-600 hover:bg-pink-700">Try Screener</Button>
                       </div>
                     </div>
                   </CardContent>
@@ -106,12 +181,19 @@ const Flamingo = () => {
               <TabsContent value="portfolio" className="mt-6">
                 <Card>
                   <CardContent className="p-6">
-                    <div className="aspect-video bg-muted rounded-md flex items-center justify-center">
-                      <div className="text-center">
+                    <div className="aspect-video bg-muted rounded-md flex items-center justify-center relative overflow-hidden">
+                      <img 
+                        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
+                        alt="Portfolio analytics"
+                        className="absolute inset-0 w-full h-full object-cover opacity-30"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"></div>
+                      <div className="text-center relative z-10">
                         <h3 className="text-xl font-bold mb-2">Portfolio Analytics</h3>
-                        <p className="text-muted-foreground">
-                          Track, manage and analyze your investments in one place
+                        <p className="text-muted-foreground max-w-lg mx-auto mb-6">
+                          Track, manage and analyze your investments in one place. Get insights into sector allocation, risk assessment, and performance metrics.
                         </p>
+                        <Button className="bg-pink-600 hover:bg-pink-700">View Demo</Button>
                       </div>
                     </div>
                   </CardContent>
@@ -123,6 +205,66 @@ const Flamingo = () => {
         
         <section className="py-16 bg-pink-50/50 dark:bg-infinity-950/30">
           <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center justify-center rounded-full bg-pink-100 p-2 dark:bg-pink-900/40 mb-4">
+                <Shield className="h-5 w-5 text-pink-600 dark:text-pink-400" />
+              </div>
+              <h2 className="section-title">Why Choose Flamingo?</h2>
+              <p className="section-subtitle">
+                We're not just another brokerage - we're reinventing trading
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+              <Card className="bg-white dark:bg-infinity-900/60 hover:shadow-lg transition-all">
+                <CardContent className="p-6">
+                  <div className="h-10 w-10 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center mb-4">
+                    <svg className="h-5 w-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">Zero Brokerage</h3>
+                  <p className="text-muted-foreground text-sm">Trade equity delivery at zero cost, with flat rates for intraday and F&O.</p>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-white dark:bg-infinity-900/60 hover:shadow-lg transition-all">
+                <CardContent className="p-6">
+                  <div className="h-10 w-10 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center mb-4">
+                    <svg className="h-5 w-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">High Security</h3>
+                  <p className="text-muted-foreground text-sm">Enterprise-grade security with 2FA, biometric authentication, and 256-bit encryption.</p>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-white dark:bg-infinity-900/60 hover:shadow-lg transition-all">
+                <CardContent className="p-6">
+                  <div className="h-10 w-10 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center mb-4">
+                    <svg className="h-5 w-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">Lightning Fast</h3>
+                  <p className="text-muted-foreground text-sm">Execute trades in microseconds with our high-performance infrastructure.</p>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-white dark:bg-infinity-900/60 hover:shadow-lg transition-all">
+                <CardContent className="p-6">
+                  <div className="h-10 w-10 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center mb-4">
+                    <svg className="h-5 w-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">Education</h3>
+                  <p className="text-muted-foreground text-sm">Comprehensive learning resources to help you make informed decisions.</p>
+                </CardContent>
+              </Card>
+            </div>
+            
             <div className="text-center mb-16">
               <h2 className="section-title">Pricing Plans</h2>
               <p className="section-subtitle">
@@ -159,7 +301,7 @@ const Flamingo = () => {
                       </li>
                     </ul>
                     
-                    <Button className="w-full">Get Started</Button>
+                    <Button className="w-full" onClick={handleStartedClick}>Get Started</Button>
                   </div>
                 </CardContent>
               </Card>
@@ -199,7 +341,7 @@ const Flamingo = () => {
                       </li>
                     </ul>
                     
-                    <Button className="w-full bg-pink-600 hover:bg-pink-700">Get Started</Button>
+                    <Button className="w-full bg-pink-600 hover:bg-pink-700" onClick={handleStartedClick}>Get Started</Button>
                   </div>
                 </CardContent>
               </Card>
@@ -238,7 +380,7 @@ const Flamingo = () => {
                       </li>
                     </ul>
                     
-                    <Button className="w-full">Get Started</Button>
+                    <Button className="w-full" onClick={handleStartedClick}>Get Started</Button>
                   </div>
                 </CardContent>
               </Card>
