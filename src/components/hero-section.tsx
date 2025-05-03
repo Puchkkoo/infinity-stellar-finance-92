@@ -39,24 +39,16 @@ export function HeroSection() {
             </Button>
           </div>
           
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 animate-fade-in" style={{ animationDelay: "0.8s" }}>
-           <div className="flex flex-col items-center">
-              <div className="font-bold text-3xl sm:text-4xl mb-1"></div>
-              <p className="text-sm text-muted-foreground"></p>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="font-bold text-3xl sm:text-4xl mb-1"></div>
-              <p className="text-sm text-muted-foreground"></p>
-            </div> 
-            <div className="flex flex-col items-center">
-              <div className="font-bold text-3xl sm:text-4xl mb-1">128+</div>
-              <p className="text-sm text-muted-foreground">Global Markets</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="font-bold text-3xl sm:text-4xl mb-1">24/7</div>
-              <p className="text-sm text-muted-foreground">Customer Support</p>
-            </div>
-          </div>
+<div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6 justify-center animate-fade-in" style={{ animationDelay: "0.8s" }}>
+  <div className="flex flex-col items-center">
+    <div className="font-bold text-3xl sm:text-4xl mb-1">128+</div>
+    <p className="text-sm text-muted-foreground">Global Markets</p>
+  </div>
+  <div className="flex flex-col items-center">
+    <div className="font-bold text-3xl sm:text-4xl mb-1">24/7</div>
+    <p className="text-sm text-muted-foreground">Customer Support</p>
+  </div>
+</div>
         </div>
       </div>
       
