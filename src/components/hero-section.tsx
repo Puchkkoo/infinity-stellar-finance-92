@@ -22,7 +22,7 @@ export function HeroSection() {
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-infinity-600 to-infinity-800 dark:from-infinity-400 dark:to-infinity-600">
               Infinity
             </span>
-            <span> Financial Services</span>
+            <span> Financial Capital</span>
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto animate-fade-in" style={{ animationDelay: "0.4s" }}>
@@ -40,14 +40,14 @@ export function HeroSection() {
           </div>
           
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 animate-fade-in" style={{ animationDelay: "0.8s" }}>
-            <div className="flex flex-col items-center">
+{/*             <div className="flex flex-col items-center">
               <div className="font-bold text-3xl sm:text-4xl mb-1">₹50B+</div>
               <p className="text-sm text-muted-foreground">Daily Volume</p>
             </div>
             <div className="flex flex-col items-center">
               <div className="font-bold text-3xl sm:text-4xl mb-1">2.5M+</div>
               <p className="text-sm text-muted-foreground">Happy Customers</p>
-            </div>
+            </div> */}
             <div className="flex flex-col items-center">
               <div className="font-bold text-3xl sm:text-4xl mb-1">128+</div>
               <p className="text-sm text-muted-foreground">Global Markets</p>
