@@ -40,14 +40,14 @@ export function HeroSection() {
           </div>
           
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 animate-fade-in" style={{ animationDelay: "0.8s" }}>
-{/*             <div className="flex flex-col items-center">
-              <div className="font-bold text-3xl sm:text-4xl mb-1">₹50B+</div>
-              <p className="text-sm text-muted-foreground">Daily Volume</p>
+           <div className="flex flex-col items-center">
+              <div className="font-bold text-3xl sm:text-4xl mb-1"></div>
+              <p className="text-sm text-muted-foreground"></p>
             </div>
             <div className="flex flex-col items-center">
-              <div className="font-bold text-3xl sm:text-4xl mb-1">2.5M+</div>
-              <p className="text-sm text-muted-foreground">Happy Customers</p>
-            </div> */}
+              <div className="font-bold text-3xl sm:text-4xl mb-1"></div>
+              <p className="text-sm text-muted-foreground"></p>
+            </div> 
             <div className="flex flex-col items-center">
               <div className="font-bold text-3xl sm:text-4xl mb-1">128+</div>
               <p className="text-sm text-muted-foreground">Global Markets</p>
